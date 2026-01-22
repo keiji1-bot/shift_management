@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>シフト一覧</title>
+</head>
+<body>
+    <h1>アルバイト シフト管理</h1>
+    <a href="{% url 'shift_add' %}">➕ シフトを追加する</a>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>スタッフ名</th>
+                <th>日付</th>
+                <th>開始</th>
+                <th>終了</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shift in object_list %}
+            <tr>
+                <td>{{ shift.staff.username }}</td>
+                <td>{{ shift.date }}</td>
+                <td>{{ shift.start_time }}</td>
+                <td>{{ shift.end_time }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">シフトはまだありません。</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
